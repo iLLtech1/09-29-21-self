@@ -5,4 +5,4 @@ const Item = new Schema({
   isDone: Boolean
 })
 
-module.exports = 
+module.exports = model('Item' Item)
