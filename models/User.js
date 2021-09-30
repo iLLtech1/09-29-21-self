@@ -1,6 +1,6 @@
-const { model, Schema } =require('mongoose')
+const { model, Schema } = require('mongoose')
 
-consr User = new Schema({
+const User = new Schema({
   name: {
     type: String,
     required: true
@@ -9,5 +9,10 @@ consr User = new Schema({
     type: String,
     unique: true
   },
+  items: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Item'
+  }]
+}, { timestamps: true })
 
-})
+module.exports = model('User', User)

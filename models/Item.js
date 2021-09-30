@@ -3,15 +3,17 @@ const { model, Schema } = require('mongoose')
 const Item = new Schema({
   text: {
     type: String,
-    require: true
+    required: true
   },
   isDone: {
     type: Boolean,
+    required: true
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   }
-})
+}, { timestamps: true }) 
 
 module.exports = model('Item', Item)

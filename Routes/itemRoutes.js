@@ -22,6 +22,7 @@ router.get('/items', async function (req, res) {
 //Above is the original Syntax for the Post command,Below is the sh0rter version
 router.post('/items', async function (req, res) {
   const item = await Item.create(req.body)
+  await User.findByIdAndUpdate(req.body.user, { $push: { items: item._id } })//Wk8Dy3 01:32:30
   res.json(item)
 })
 
@@ -38,3 +39,4 @@ router.delete('/items/:id', async function (req, res) {
 })
 
 module.exports = router 
+
