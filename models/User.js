@@ -15,4 +15,6 @@ const User = new Schema({
   }]
 }, { timestamps: true })
 
+User.plugin(require)
+
 module.exports = model('User', User)

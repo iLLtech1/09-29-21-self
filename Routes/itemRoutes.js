@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { Item, User } = require('../models')
+const passport = require('passport')
 
 // router.get('/items', (req, res) => {
 //   Item.find({})
@@ -21,7 +22,7 @@ router.get('/items', async function (req, res) {
 
 //Above is the original Syntax for the Post command,Below is the sh0rter version
 router.post('/items', async function (req, res) {
-  const item = await Item.create(req.body)
+  const item = await Item.create({ ...req.body, user: req.user._id })
   await User.findByIdAndUpdate(req.body.user, { $push: { items: item._id } })//Wk8Dy3 01:32:30
   res.json(item)
 })
