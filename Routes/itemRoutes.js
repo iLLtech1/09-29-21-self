@@ -9,7 +9,7 @@ const { Item, User } = require('../models')
 
 //Above is the original Syntax for the Get command,Below is the shorter version
 router.get('/items', async function (req, res) {
-  const items = await Item.find({})
+  const items = await Item.find({}).populate('user')
   res.json(items)
 })
 

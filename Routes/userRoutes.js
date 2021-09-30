@@ -1,12 +1,12 @@
 const router = require('express').Router()
 const { User } = require('../models')
 
-router.get('/user/:id', async function (req, res) {
+router.get('/users/:id', async function (req, res) {
   const user = await User.findById(req.params.id).populate('items')
   res.json(user)
 })
 
-router.post('/user', async function (req, res) {
+router.post('/users', async function (req, res) {
   const user = await User.create(req.body)
   res.json(user)
 })
